@@ -9,6 +9,28 @@ import gzip
 
 
 def create_index(level = 'city'):
+	"""
+	Generate and save an index of geographical data from the Geonames.org dataset.
+
+	This function reads data from 'allCountries.txt', filters and processes the dataset based on the specified
+	geographical level ('city' or 'country'). For the 'city' level, it selects records with feature class 'P' and
+	feature codes such as 'PPL', 'PPLA', 'PPLA2', 'PPLA3', 'PPLA4', and 'PPLC', and filters for cities with a population
+	greater than 1000. For the 'country' level, it selects records with feature class 'A' and feature code 'PCLI'.
+	The function then processes the 'alternatenames' column by splitting comma-separated names into lists, exploding the
+	DataFrame, filling missing alternate names with the main name, and sorting to retain the entry with the highest population
+	for each alternate name. It removes duplicate keys (alternate names) that are shorter than 3 characters, creates a dictionary
+	mapping each alternate name to a dictionary of attributes (name, country_code, population, timezone, and coordinates),
+	and finally saves this index as a gzipped JSON file in the '../geomentions/data/' directory.
+
+	Parameters:
+	    level (str, optional): The geographical level to index. Must be either 'city' or 'country'. Defaults to 'city'.
+
+	Returns:
+	    None
+
+	Side Effects:
+	    Writes a gzipped JSON file named '{level}_index.json.gz' to the '../geomentions/data/' directory.
+	"""
 	columns = [
 		"geonameid", "name", "asciiname", "alternatenames", "latitude", "longitude",
 		"feature_class", "feature_code", "country_code", "cc2", "admin1_code",
