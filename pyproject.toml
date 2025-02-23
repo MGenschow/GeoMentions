@@ -1,0 +1,43 @@
+[build-system]
+# The packages needed to build your project
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "geomentions"
+version = "0.0.1"
+description = "A mini Python package for geotagging text and retrieving location info."
+readme = "README.md"
+requires-python = ">=3.7"
+license = { text = "MIT License" }
+
+authors = [
+  { name = "Malte Genschow", email = "sense-mitten.4z@icloud.com"}
+]
+
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.7",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent"
+]
+
+keywords = ["geotagging", "NLP", "text processing", "cities", "countries", "geotext",]
+
+dependencies = [
+  "regex"
+]
+
+[project.urls]
+"Source Code" = "https://github.com/MGenschow/geomentions"
+"Issue Tracker" = "https://github.com/MGenschow/geomentions/issues"
+
+[tool.setuptools.packages.find]
+# Search for packages starting in the current directory
+where = ["."]
+include = ["geomentions*"]
+
