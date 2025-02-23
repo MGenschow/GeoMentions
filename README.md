@@ -1,4 +1,7 @@
-
+[![License: MIT](https://img.shields.io/badge/license-MIT-C06524)](https://github.com/MGenschow/GeoMentions/blob/main/LICENSE)
+[![PyPI - Version](https://img.shields.io/pypi/v/geomentions.svg)](https://pypi.org/project/geomentions/)
+[![Documentation Status](https://readthedocs.org/projects/geomentions/badge/?version=latest)](https://geomentions.readthedocs.io/en/latest/)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/geomentions.svg)](https://pypi.org/project/geomentions/)
 
 ## Installation
 
@@ -14,10 +17,10 @@ Below is a quick example of how to use geomentions:
 from geomentions import GeoMentions
 
 # Instantiate the GeoMentions (True (default) means we standardize names to a single variant (Munich and München is counted as the same entity))
-gt = GeoMentions(standardize_names=True)
+gm = GeoMentions(standardize_names=True)
 
 text = "Munich is in Germany can be translated to german as München ist in Deutschland. Another city that is mentioned here is New York."
-result = gt.fit(text)
+result = gm.fit(text)
 
 # Basic summary
 print(result)
@@ -75,19 +78,19 @@ print(result.to_dict())
 ```python
 from geomentions import GeoMentions
 
-gt = GeoMentions(standardize_names=True)
+gm = GeoMentions(standardize_names=True)
 
 text = "Берлин is the cyrillic spelling for Berlin"
-print(gt.fit(text).city_mentions)
+print(gm.fit(text).city_mentions)
 # [CityMention(name='Berlin', count=2, country_code='DE', population=3426354, coordinates=[52.52437, 13.41053])]
 
 text = "கம்பளை is the spelling for the city Gampola in Sri Lanka"
-print(gt.fit(text).city_mentions)
+print(gm.fit(text).city_mentions)
 # [CityMention(name='Gampola', count=2, country_code='LK', population=24283, coordinates=[7.1643, 80.5696]),
 # CityMention(name='Lanka', count=1, country_code='IN', population=36805, coordinates=[25.92907, 92.94856])]
 
 text = "'자르브뤼켄 is the spelling for Saarbrücken in Germany"
-print(gt.fit(text).city_mentions)
+print(gm.fit(text).city_mentions)
 # [CityMention(name='Saarbrücken', count=2, country_code='DE', population=179349, coordinates=[49.23262, 7.00982])]
 
 
@@ -116,9 +119,9 @@ print(gt.fit(text).city_mentions)
 ```python 
 from geomentions import GeoMentions
 
-gt = GeoMentions()
-city_index = gt.city_index
-county_index = gt.country_index
+gm = GeoMentions()
+city_index = gm.city_index
+county_index = gm.country_index
 ```
 
 
